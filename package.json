@@ -1,0 +1,19 @@
+{
+  "name": "studbud_shir2653",
+  "version": "1.0.0",
+  "description": "Web application for studying",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saul890/studbud_shir2653.git"
+  },
+  "author": "Saul Hirner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saul890/studbud_shir2653/issues"
+  },
+  "homepage": "https://github.com/saul890/studbud_shir2653#readme"
+}
