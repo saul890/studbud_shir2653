@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/saul890/studbud_shir2653/issues"
   },
-  "homepage": "https://github.com/saul890/studbud_shir2653#readme"
+  "homepage": "https://github.com/saul890/studbud_shir2653#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
