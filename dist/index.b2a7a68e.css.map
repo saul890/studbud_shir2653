@@ -1,0 +1,1 @@
+{"mappings":"AAAA;EAAmB;EACf;EACA;EACA;EACA;EACA;EACA,qBACE;;;AAKJ;EAAM;;;AAEN;EAAS;;;AAET;EAAO;;;AAST;EACI","sources":["public/scss/layout.scss","public/scss/main.scss"],"sourcesContent":[null,"@import 'layout';\n@import 'typography';"],"names":[],"version":3,"file":"index.b2a7a68e.css.map","sourceRoot":"/__parcel_source_root/"}
