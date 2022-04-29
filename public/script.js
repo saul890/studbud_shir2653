@@ -80,13 +80,10 @@ function renderTask(task) {
 
     // Listen for when the 
     delButton.addEventListener("click", function (event) {
-        
         event.preventDefault();
-
         let id = event.target.parentElement.getAttribute('data-id');
-
-        let index = taskListArray.findIndex(task => task.id === Number(id));
-        removeItemFromArray(taskListArray, index)
+        let index = taskList.findIndex(task => task.id === Number(id));
+        removeItemFromArray(taskList, index)
         item.remove();
         // Remove the task item from the page when button clicked
         // Because we used 'let' to define the item, this will always delete the right element

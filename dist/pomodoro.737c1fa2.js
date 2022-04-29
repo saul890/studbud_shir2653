@@ -514,10 +514,10 @@ function renderTask(task) {
     delButton.addEventListener("click", function(event) {
         item.remove();
         event.preventDefault();
-        console.log(taskListArray);
+        console.log(taskList);
         let id = event.target.parentElement.getAttribute('data-id');
         console.log(id);
-        let index = taskListArray.findIndex((task1)=>task1.id === Number(id)
+        let index = taskList.findIndex((task1)=>task1.id === Number(id)
         );
         console.log(index);
     // Remove the task item from the page when button clicked
