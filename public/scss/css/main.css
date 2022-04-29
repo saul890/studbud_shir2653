@@ -1,0 +1,151 @@
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  -ms-grid-columns: 0.6fr 1.2fr 1.2fr;
+      grid-template-columns: 0.6fr 1.2fr 1.2fr;
+  -ms-grid-rows: 0.5fr 1.5fr 1fr;
+      grid-template-rows: 0.5fr 1.5fr 1fr;
+  gap: 10px 10px;
+      grid-template-areas: "nav header header" "nav main main" "nav main main";
+}
+
+nav {  
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: nav;
+  position: relative;
+}
+
+#navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background: #F6F8FA;
+}
+
+#alltasks{
+  margin-left: 30%;
+  margin-top: 50px;
+  height: 100%;
+  width: 50%;
+  background-color: #FFFFFF;
+  position: absolute;
+}
+
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+}
+
+main {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: main;
+}
+
+#selected{
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  color: #034EFC;
+}
+
+h4 {
+  color: black;
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: lighter;
+  margin: 30% 0 75px 15%;
+}
+
+h4:hover{
+  color: #034EFC;
+}
+
+form{
+  margin-left: 50px;
+  top: 100px;
+  font-family: 'Raleway', sans-serif;
+  position: absolute;
+  line-height: 50px;
+}
+
+label{
+  display: block;
+  line-height: 10px;
+}
+
+
+ul{
+  list-style-type: none;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+}
+
+#tasklist{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input[type='checkbox']{
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+
+
+.done:checked{
+  box-shadow: orange;
+}
+
+
+
+
+.task{
+  margin-bottom: 15px;
+  padding: 5px 10px 10px 50px;
+  border-radius: 25px;
+  background-color: #C4C4C4;
+  color: #FFFFFF;
+  width: 50%;
+  position: relative;
+}
+
+
+.task_description{
+  font-weight: bold;
+}
+
+.task_due{
+  font-weight: bold;
+}
+
+.task_time{
+  font-weight: bold;
+}
+
+.task_priority{
+  font-weight: bold;
+}
+
+li{
+  line-height: 30px;
+}
+
+
+a{
+  text-decoration: none;
+}
+
+
+
+/*# sourceMappingURL=main.css.map */
