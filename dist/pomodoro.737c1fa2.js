@@ -512,21 +512,24 @@ function renderTask(task) {
     item.appendChild(delButton); // Adds a delete button to every task
     // Listen for when the 
     delButton.addEventListener("click", function(event) {
+        item.remove();
         event.preventDefault();
+        console.log(taskListArray);
         let id = event.target.parentElement.getAttribute('data-id');
+        console.log(id);
         let index = taskListArray.findIndex((task1)=>task1.id === Number(id)
         );
-        removeItemFromArray(taskListArray, index);
-        item.remove();
+        console.log(index);
     // Remove the task item from the page when button clicked
     // Because we used 'let' to define the item, this will always delete the right element
     });
     // Clear the value of the input once the task has been added to the page
     form.reset();
-}
-function removeItemFromArray(arr, index) {
-    if (index > -1) arr.splice(index, 1);
-    return arr;
-}
+} //function removeItemFromArray(arr, index) {
+ //  if (index > -1) {
+ //    arr.splice(index, 1)
+ //}
+ //return arr;
+ //}
 
-//# sourceMappingURL=index.737c1fa2.js.map
+//# sourceMappingURL=pomodoro.737c1fa2.js.map
