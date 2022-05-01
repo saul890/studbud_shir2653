@@ -68,7 +68,9 @@ function renderTask(task) {
 
     let delButton = document.createElement("button");
     let delButtonText = document.createTextNode("Delete");
+    delButton.classList.add("del-button");
     delButton.appendChild(delButtonText);
+    
 
     let checkbox = document.createElement('input');
     checkbox.classList.add("done")
@@ -102,3 +104,4 @@ function removeItemFromArray(arr, index) {
     }
     return arr;
 }
+

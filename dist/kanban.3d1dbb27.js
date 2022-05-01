@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"1RSxf":[function(require,module,exports) {
+})({"1W0ds":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
-var HMR_ENV_HASH = "4e5dac8afe405db7";
-module.bundle.HMR_BUNDLE_ID = "65a0b4d5737c1fa2";
+var HMR_ENV_HASH = "69f74e7f31319ffd";
+module.bundle.HMR_BUNDLE_ID = "c65067373d1dbb27";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -454,80 +454,188 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}]},["1RSxf"], null, "parcelRequire48b2")
-// TASK LIST
-// Setting up variables for our HTML elements using DOM selection
-const form = document.getElementById("taskform");
-const button = document.querySelector("#taskform > button"); // Complex CSS query
-const tasklist = document.getElementById("tasklist");
-const taskInput = document.getElementById("taskInput");
-const dueDateInput = document.getElementById("dueDateInput");
-const estimatedTimeInput = document.getElementById("estimatedTimeInput");
-const priorityInput = document.getElementById("priorityInput");
-// Event listener for Button click
-// This could also be form.addEventListener("submit", function() {...} )
-button.addEventListener("click", function(event) {
-    event.preventDefault(); // Not as necessary for button, but needed for form submit
-    let task = taskInput.value // Task name value
-    ;
-    let date = new Date().toLocaleDateString('en-GB'); // Due date value
-    let time = estimatedTimeInput.value; // Estimated time value
-    let priority = priorityInput.value; // Priority value
-    // Call the addTask() function using
-    addTask(task, date, time, priority, false);
-    // Log out the newly populated taskList everytime the button has been pressed
-    console.log(taskList);
-});
-// Create an empty array to store our tasks
-var taskList = [];
-function addTask(taskDescription, dueDate, estimatedTime, priorityRating, checked) {
-    let task = {
-        id: Date.now(),
-        taskDescription,
-        dueDate,
-        estimatedTime,
-        priorityRating,
-        checked
+},{}],"fuzMm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _kanban = require("./KanbanJavascript/Kanban");
+var _kanbanDefault = parcelHelpers.interopDefault(_kanban);
+new _kanbanDefault.default(document.querySelector(".Kanban"));
+
+},{"./KanbanJavascript/Kanban":"gnx8b","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"gnx8b":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _columnJs = require("./Column.js");
+var _columnJsDefault = parcelHelpers.interopDefault(_columnJs);
+class Kanban {
+    constructor(root){
+        this.root = root;
+        Kanban.columns().forEach((column)=>{
+            const columnView = new _columnJsDefault.default(column.id, column.title);
+            this.root.appendChild(columnView.elements.root);
+        });
+    }
+    static columns() {
+        return [
+            {
+                id: 1,
+                title: "Not Started"
+            },
+            {
+                id: 2,
+                title: "In Progress"
+            },
+            {
+                id: 3,
+                title: "Completed"
+            }
+        ];
+    }
+}
+exports.default = Kanban;
+
+},{"./Column.js":"dXuBA","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"dXuBA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _kanban = require("./Kanban");
+var _kanbanDefault = parcelHelpers.interopDefault(_kanban);
+var _kanbanAPI = require("./kanbanAPI");
+var _kanbanAPIDefault = parcelHelpers.interopDefault(_kanbanAPI);
+class Column {
+    constructor(id, title){
+        this.elements = {
+        };
+        this.elements.root = Column.createRoot();
+        this.elements.title = this.elements.root.querySelector(".kanban_column_title");
+        this.elements.items = this.elements.root.querySelector(".kanban_column_items");
+        this.elements.root.dataset.id = id;
+        this.elements.title.textContent = title;
+        _kanbanAPIDefault.default.getItems(id).ForEach((item)=>{
+            console.log(item);
+        });
+    }
+    static createRoot() {
+        const range = document.createRange();
+        range.selectNode(document.body);
+        return range.createContextualFragment(`\n            <div class="kanban_column">\n                <div class="kanban_column_title"></div>\n                <div class="kanban_column_items"></div>\n            </div>\n        `).children[0];
+    }
+    renderItem(data) {
+    }
+}
+exports.default = Column;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./Kanban":"gnx8b","./kanbanAPI":"bAdcD"}],"JacNc":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
     };
-    // Add the task to our array of tasks
-    taskList.push(task);
-    // Separate the DOM manipulation from the object creation logic
-    renderTask(task);
-}
-// Function to display the item on the page
-function renderTask(task) {
-    let item = document.createElement("ul");
-    item.classList.add("tasks");
-    item.setAttribute('date-id', task.id);
-    item.innerHTML = "<p><li class=task_description>" + task.taskDescription + task.priorityRating + "</li>" + "<li class=task_due>" + task.dueDate + "</li>" + "<li class=task_time>" + task.estimatedTime + "</li>" + "<li class=task_priority>" + "<p>";
-    tasklist.appendChild(item);
-    // Setup delete button DOM elements
-    let delButton = document.createElement("button");
-    let delButtonText = document.createTextNode("Delete");
-    delButton.classList.add("del-button");
-    delButton.appendChild(delButtonText);
-    let checkbox = document.createElement('input');
-    checkbox.classList.add("done");
-    checkbox.type = "checkbox";
-    item.appendChild(checkbox);
-    item.appendChild(delButton); // Adds a delete button to every task
-    // Listen for when the 
-    delButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        let id = event.target.parentElement.getAttribute('data-id');
-        let index = taskList.findIndex((task1)=>task1.id === Number(id)
-        );
-        removeItemFromArray(taskList, index);
-        item.remove();
-    // Remove the task item from the page when button clicked
-    // Because we used 'let' to define the item, this will always delete the right element
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
     });
-    // Clear the value of the input once the task has been added to the page
-    form.reset();
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"bAdcD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class KanbanAPI {
+    static getItems(columnId) {
+        const column = read().find((column1)=>column1.id == columnId
+        );
+        if (!column) return [];
+        return column.items;
+    }
+    static insertItem(columnId, content) {
+        const data = read();
+        const column = data.find((column1)=>column1.id == columnId
+        );
+        const item = {
+            id: Math.floor(Math.random() * 100000),
+            content
+        };
+        if (!column) throw new Error("Column does not exist.");
+        column.items.push(item);
+        save(data);
+        return item;
+    }
+    static updateItem(itemId, newProps) {
+        const data = read();
+        const [item, currentColumn] = (()=>{
+            for (const column of data){
+                const item1 = column.items.find((item2)=>item2.id == itemId
+                );
+                if (item1) return [
+                    item1,
+                    column
+                ];
+            }
+        })();
+        if (!item) throw new Error("Item not found.");
+        item.content = newProps.content === undefined ? item.content : newProps.content;
+        //update column and position
+        if (newProps.columnId !== undefined && newProps.position !== undefined) {
+            const targetColumn = data.find((column)=>columnId == newProps.columnId
+            );
+            if (!targetColumn) throw new Error("Target column not found.");
+            //delete the item from current column
+            currentColumn.items.splice(currentColumn.items.indexOf(item), 1);
+            //move item into it's new column and position 
+            targetColumn.items.splice(newProps.position, 0, item);
+        }
+        save(data);
+    }
+    static deleteItem(itemId) {
+        const data = read();
+        for (const column of data){
+            const item = column.items.find((item1)=>item1.id == itemId
+            );
+            if (item) column.items.splice(column.items.indexOf(item), 1);
+        }
+        save(data);
+    }
 }
-function removeItemFromArray(arr, index) {
-    if (index > -1) arr.splice(index, 1);
-    return arr;
+exports.default = KanbanAPI;
+function read() {
+    const json = localStorage.getItem("kanban-data");
+    if (!json) return [
+        {
+            id: 1,
+            items: []
+        },
+        {
+            id: 2,
+            items: []
+        },
+        {
+            id: 3,
+            items: []
+        }
+    ];
+    return JSON.parse(json);
+}
+function save(data) {
+    localStorage.setItem("kanban-data", JSON.stringify(data));
 }
 
-//# sourceMappingURL=index.737c1fa2.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["1W0ds","fuzMm"], "fuzMm", "parcelRequire48b2")
+
+//# sourceMappingURL=kanban.3d1dbb27.js.map
