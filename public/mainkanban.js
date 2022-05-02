@@ -1,5 +1,5 @@
-import Kanban from "./KanbanJavascript/Kanban";
+let tasks = Object.entries(localStorage);
 
-new Kanban(
-    document.querySelector(".Kanban")
-)
+console.log(JSON.parse(tasks[0][1]).task.taskDescription);
+
+//for loop .. 0 until length of array !

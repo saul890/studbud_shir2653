@@ -481,16 +481,19 @@ button.addEventListener("click", function(event) {
 // Create an empty array to store our tasks
 var taskList = [];
 function addTask(taskDescription, dueDate, estimatedTime, priorityRating, checked) {
-    let task = {
+    var task = {
         id: Date.now(),
-        taskDescription,
-        dueDate,
-        estimatedTime,
-        priorityRating,
-        checked
+        taskDescription: taskDescription,
+        dueDate: dueDate,
+        estimatedTime: estimatedTime,
+        priorityRating: priorityRating,
+        checked: checked
     };
     // Add the task to our array of tasks
     taskList.push(task);
+    window.localStorage.setItem(task.id, JSON.stringify({
+        task
+    }));
     // Separate the DOM manipulation from the object creation logic
     renderTask(task);
 }
