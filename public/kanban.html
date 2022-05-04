@@ -7,6 +7,7 @@
   <meta name="description" content="" />
   <!-- <link rel="icon" href = "img/favicon.png"> -->
   <link rel="stylesheet" href="scss/kanban.scss">
+  <link rel="stylesheet" href="libraries/jkanban.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@500;900&display=swap" rel="stylesheet">
@@ -25,19 +26,15 @@
     </nav>
     <header class="header"></header>
     <main class="main">
-      <div class="kanban">
-        <!--<div class="kanban_column">
-          <div class="kanban_column_title">Not Started</div>
-          <div class="kanban_items">
-            <div contenteditable class="kanban_item_input">This is where a task will go</div>
-            <div class="kanban_dropzone"></div>
-          </div>
-        </div>-->
+      <div id="kanban_container">
+        
       </div>
       <button class="kanban_add_board" type="button">Add</button>
 
     </main>
   </div>
+<script  src="mainkanban.js" type="module"></script>
 </body>
+
 </html>
-<script src = "mainkanban.js"></script>
+
