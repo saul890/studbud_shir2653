@@ -4,7 +4,20 @@ let tasks = Object.entries(localStorage);
 
 console.log(JSON.parse(tasks[0][1]).task.taskDescription);
 
+//for (let i = 0; i < tasks; i++) {
+ //   console.log(JSON.parse(tasks[i][i]).task.taskDescription);
+  //}
+
+
+
+
 //for loop .. 0 until length of array !
+
+
+
+
+
+
 
 var kanban = new jKanban({
     element          : '#kanban_container',                                           // selector of the kanban container
@@ -14,9 +27,11 @@ var kanban = new jKanban({
     dragItems        : true,                                         // if false, all items are not draggable
     boards           : [
         { id: 'toDo', title: "To Do", item: [], color: "#178bff", order: 1},
-        { id: 'done', title: "Done", item: [], color: "#3dd66b", order: 2}
+        { id: 'inProgress', title: "In Progress", item: [], color: "#3dd66b", order: 2},
+        { id: 'done', title: "Done", item: [], color: "#3dd66b", order: 3}
+        
     ],                                           // json of boards
-    dragBoards       : true,                                         // the boards are draggable, if false only item can be dragged
+    dragBoards       : false,                                         // the boards are draggable, if false only item can be dragged
     itemAddOptions: {
         enabled: false,                                              // add a button to board for easy item creation
         content: '+',                                                // text or html content of the board button   
@@ -40,4 +55,4 @@ var kanban = new jKanban({
     dragendBoard     : function (el) {},                             // callback when any board stop drag
     buttonClick      : function(el, boardId) {},                     // callback when the board's button is clicked
     propagationHandlers: [],                                         // the specified callback does not cancel the browser event. possible values: "click", "context"
-})
+});

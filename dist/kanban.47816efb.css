@@ -93,14 +93,14 @@ h4 {
 }
 
 .kanban_add_board {
-  width: 80%;
+  width: 50%;
   margin-top: 10px;
-  padding: 10px 0;
+  display: block;
+  padding: 20px 0;
   font-size: 16px;
-  color: white;
-  background: rgba(0, 0, 0, 0.1);
+  color: black;
+  background: #e2e4e6;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 

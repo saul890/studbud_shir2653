@@ -458,6 +458,9 @@ function hmrAcceptRun(bundle, id) {
 var _jkanbanMinJs = require("../public/libraries/jkanban.min.js");
 let tasks = Object.entries(localStorage);
 console.log(JSON.parse(tasks[0][1]).task.taskDescription);
+//for (let i = 0; i < tasks; i++) {
+//   console.log(JSON.parse(tasks[i][i]).task.taskDescription);
+//}
 //for loop .. 0 until length of array !
 var kanban = new jKanban({
     element: '#kanban_container',
@@ -474,14 +477,21 @@ var kanban = new jKanban({
             order: 1
         },
         {
+            id: 'inProgress',
+            title: "In Progress",
+            item: [],
+            color: "#3dd66b",
+            order: 2
+        },
+        {
             id: 'done',
             title: "Done",
             item: [],
             color: "#3dd66b",
-            order: 2
+            order: 3
         }
     ],
-    dragBoards: true,
+    dragBoards: false,
     itemAddOptions: {
         enabled: false,
         content: '+',
