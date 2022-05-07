@@ -464,10 +464,9 @@ const taskInput = document.getElementById("taskInput");
 const dueDateInput = document.getElementById("dueDateInput");
 const estimatedTimeInput = document.getElementById("estimatedTimeInput");
 const priorityInput = document.getElementById("priorityInput");
-const submitButton = document.getElementById("submit-button");
 // Event listener for Button click
 // This could also be form.addEventListener("submit", function() {...} )
-submitButton.addEventListener("click", function(event) {
+button.addEventListener("click", function(event) {
     event.preventDefault(); // Not as necessary for button, but needed for form submit
     let task = taskInput.value // Task name value
     ;
@@ -493,24 +492,9 @@ function addTask(taskDescription, dueDate, estimatedTime, priorityRating, checke
     // Add the task to our array of tasks
     taskList.push(task);
     window.localStorage.setItem(task.id, JSON.stringify({
-        taskDescription: taskDescription,
-        dueDate: dueDate,
-        estimatedTime: estimatedTime,
-        priorityRating: priorityRating,
-        checked: checked
+        task
     }));
     // Separate the DOM manipulation from the object creation logic
-    //addToLocalStorage(task);
-    renderTask(task);
-}
-// when there are elements in the local storage, get them by index number
-for(var i = 0; i <= localStorage.length - 1; i++){
-    key = localStorage.key(i);
-    getFromLocalStorage(key);
-}
-// Render tasks from local storage
-function getFromLocalStorage(taskId) {
-    task = JSON.parse(window.localStorage.getItem(taskId));
     renderTask(task);
 }
 // Function to display the item on the page
@@ -522,7 +506,7 @@ function renderTask(task) {
     tasklist.appendChild(item);
     // Setup delete button DOM elements
     let delButton = document.createElement("button");
-    let delButtonText = document.createTextNode("Remove Task");
+    let delButtonText = document.createTextNode("Delete");
     delButton.classList.add("del-button");
     delButton.appendChild(delButtonText);
     let checkbox = document.createElement('input');
@@ -530,15 +514,13 @@ function renderTask(task) {
     checkbox.type = "checkbox";
     item.appendChild(checkbox);
     item.appendChild(delButton); // Adds a delete button to every task
-    // NOTHING HERE SAYS ANYTHING ABOUT DELETE BUTTON !
-    // DELETE BUTTON SHOULD DELETE TASK FROM LOCAL STORAGE ! 
+    // Listen for when the 
     delButton.addEventListener("click", function(event) {
         event.preventDefault();
         let id = event.target.parentElement.getAttribute('data-id');
         let index = taskList.findIndex((task1)=>task1.id === Number(id)
         );
         removeItemFromArray(taskList, index);
-        console.log(taskList);
         item.remove();
     // Remove the task item from the page when button clicked
     // Because we used 'let' to define the item, this will always delete the right element

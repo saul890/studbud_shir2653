@@ -7,6 +7,7 @@
   <meta name="description" content="" />
   <!-- <link rel="icon" href = "img/favicon.png"> -->
   <link rel="stylesheet" href="scss/main.scss">
+  <link rel="stylesheet" href="scss/stopwatch.scss">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@500;900&display=swap" rel="stylesheet">
@@ -24,7 +25,26 @@
       </div>
     </nav>
     <header class="header"></header>
-    <main class="main"></main>
+    <main class="main">
+      <div class="container">
+        <h1 class="screen">
+          <span id="minutes">
+            00
+          </span>:<span id="seconds">
+            00
+          </span>:<span id="hundredths">
+            00
+          </span>
+        </h1>
+        <div class="buttons">
+          <button id="start">START</button>
+          <button id="stop">STOP</button>
+          <button id="reset">RESET</button>
+        </div>
+      </div>
+    </main>
   </div>
 </body>
 </html>
+
+<script  src="stopwatch.js" type="module"></script>

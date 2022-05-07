@@ -1,24 +1,45 @@
 import '../public/libraries/jkanban.min.js'
-
-let tasks = Object.entries(localStorage);
-
-console.log(JSON.parse(tasks[0][1]).task.taskDescription);
-
+//const tasklist = document.getElementById("tasklist");
+//let tasks = Object.entries(localStorage);
+//console.log(JSON.parse(tasks[0][1]).task.taskDescription);
 //for (let i = 0; i < tasks; i++) {
  //   console.log(JSON.parse(tasks[i][i]).task.taskDescription);
   //}
-
-
-
-
 //for loop .. 0 until length of array !
 
 
+// Loop through local storage and render all tasks 
+for (var i = 0; i <= localStorage.length - 1; i++) {
+    key = localStorage.key(i);
+    getFromLocalStorage(key)
+}
+
+/*
+function function1() {
+    var ul = document.getElementById("tasklist");
+    var firstRow = document.getElementById("toDo");
+    ul.appendChild(document.createTextNode("Four"));
+    firstRow.appendChild(ul);
+  }
+*/
+
+function renderTask(task) {
+    let item = document.createElement("ul");
+    item.classList.add("tasks");
+    item.setAttribute('date-id', task.id)
+    item.innerHTML = "<p>" + "<li class=task_description>" + task.taskDescription + task.priorityRating + "</li>" + "<li class=task_due>" + task.dueDate + "</li>" + "<li class=task_time>" + task.estimatedTime + "</li>" + "<li class=task_priority>" + "<p>";
+    kanban_container.appendChild(item);
+}
+
+function getFromLocalStorage(taskId) {
+    task = JSON.parse(window.localStorage.getItem(taskId));
+      renderTask(task);
+  }
 
 
 
-
-
+ 
+  // Kanban library code from jkanban
 var kanban = new jKanban({
     element          : '#kanban_container',                                           // selector of the kanban container
     gutter           : '15px',                                       // gutter of the board
@@ -29,7 +50,6 @@ var kanban = new jKanban({
         { id: 'toDo', title: "To Do", item: [], color: "#178bff", order: 1},
         { id: 'inProgress', title: "In Progress", item: [], color: "#3dd66b", order: 2},
         { id: 'done', title: "Done", item: [], color: "#3dd66b", order: 3}
-        
     ],                                           // json of boards
     dragBoards       : false,                                         // the boards are draggable, if false only item can be dragged
     itemAddOptions: {
@@ -56,3 +76,6 @@ var kanban = new jKanban({
     buttonClick      : function(el, boardId) {},                     // callback when the board's button is clicked
     propagationHandlers: [],                                         // the specified callback does not cancel the browser event. possible values: "click", "context"
 });
+
+
+

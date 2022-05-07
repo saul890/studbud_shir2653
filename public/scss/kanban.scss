@@ -9,63 +9,10 @@
     height: 100%;
     background: #F6F8FA;
   }
-  
-  .kanban{
-    display: flex;
-    padding: 30px;
-    width: 750px;
-    background: blue;
-    border-radius: 5px;
-}
 
-.kanban * {
-    font-family: 'Raleway', sans-serif;
-}
 
-.kanban_column {
-    flex: 1;
-}
 
-.kanban_column:not(:last-child){
-    margin-right: 30px;
-}
 
-.kanban_column_title{
-    margin-bottom: 20px;
-    font-size: 30px;
-    color: white;
-    user-select: none;
-}
-
-.kanban_item_input{
-    padding: 10px 15px;
-    box-sizing: border-box;
-    background: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.kanban_dropzone{
-    height: 10px;
-    transition: background 0.15s, height 0.15s;
-}
-
-.kanban_dropzone--active{
-    height: 20px;
-    background: rgba(0, 0, 0, 0.25);
-}
-
-.kanban_add_board{
-    width: 50%;
-    margin-top: 10px;
-    display: block;
-    padding: 20px 0;
-    font-size: 16px;
-    color: black;
-    background: #e2e4e6;
-    border: none;
-    cursor: pointer;
-}
 
   #alltasks{
     margin-left: 30%;
@@ -126,7 +73,7 @@
     border-radius: 25px;
     background-color: #C4C4C4;
     color: #FFFFFF;
-    width: 50%;
+    width: 10%;
     position: relative;
   }
   
@@ -145,10 +92,6 @@
   
   .task_priority{
     font-weight: bold;
-  }
-  
-  li{
-    line-height: 30px;
   }
   
   

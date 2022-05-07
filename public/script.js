@@ -1,5 +1,6 @@
 // TASK LIST
 
+
 // Setting up variables for our HTML elements using DOM selection
 const form = document.getElementById("taskform");
 const button = document.querySelector("#taskform > button"); // Complex CSS query
@@ -73,6 +74,10 @@ function getFromLocalStorage(taskId) {
       renderTask(task);
   }
 
+function onlyGetFromLocalStorage(taskId) {
+    task = JSON.parse(window.localStorage.getItem(taskId));
+  }
+
 
 
 // Function to display the item on the page
@@ -103,11 +108,19 @@ function renderTask(task) {
     // DELETE BUTTON SHOULD DELETE TASK FROM LOCAL STORAGE ! 
     delButton.addEventListener("click", function (event) {
         event.preventDefault();
-        let id = event.target.parentElement.getAttribute('data-id');
+        // this removes the item from the consoles array
+        let id = event.target.parentElement.getAttribute('date-id');
+        
         let index = taskList.findIndex(task => task.id === Number(id));
+
+
+        // Removes items added recently but not the items that have been pulled from local storage
+        window.localStorage.removeItem(id);
+        
         removeItemFromArray(taskList, index);
-        console.log(taskList);
+        
         item.remove();
+
         // Remove the task item from the page when button clicked
         // Because we used 'let' to define the item, this will always delete the right element
     })
@@ -117,9 +130,12 @@ function renderTask(task) {
 }
 
 
+
+
 function removeItemFromArray(arr, index) {
     if (index > -1) {
         arr.splice(index, 1)
     }
     return arr;
 }
+
