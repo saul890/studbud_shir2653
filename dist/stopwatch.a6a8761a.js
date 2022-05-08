@@ -522,7 +522,6 @@ class Stopwatch {
         // Render screen
         document.getElementById("minutes").textContent = minutes;
         document.getElementById("seconds").textContent = seconds;
-        document.getElementById("hundredths").textContent = hundredths;
     }
 }
 const STOPWATCH = Stopwatch.ready(); // Youtube tutorial https://www.youtube.com/watch?v=yhhFXNHKpsk

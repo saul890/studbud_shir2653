@@ -455,32 +455,19 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"fuzMm":[function(require,module,exports) {
-var _jkanbanMinJs = require("../public/libraries/jkanban.min.js");
-//const tasklist = document.getElementById("tasklist");
-//let tasks = Object.entries(localStorage);
-//console.log(JSON.parse(tasks[0][1]).task.taskDescription);
-//for (let i = 0; i < tasks; i++) {
-//   console.log(JSON.parse(tasks[i][i]).task.taskDescription);
-//}
-//for loop .. 0 until length of array !
+var _jkanbanMinJs = require("../public/jkanban/jkanban.min.js");
+// You will need to make an array of task titles
 // Loop through local storage and render all tasks 
 for(var i = 0; i <= localStorage.length - 1; i++){
-    key = localStorage.key(i);
-    item = getFromLocalStorage(key);
+    let key = localStorage.key(i);
+    getFromLocalStorage(key);
 }
-/*
-function function1() {
-    var ul = document.getElementById("tasklist");
-    var firstRow = document.getElementById("toDo");
-    ul.appendChild(document.createTextNode("Four"));
-    firstRow.appendChild(ul);
-  }
-*/ function renderTask(task) {
+function renderTask(task) {
     let item = document.createElement("ul");
     item.classList.add("tasks");
     item.setAttribute('date-id', task.id);
-    item.innerHTML = "<p><li class=task_description>" + task.taskDescription + task.priorityRating + "</li>" + "<li class=task_due>" + task.dueDate + "</li>" + "<li class=task_time>" + task.estimatedTime + "</li>" + "<li class=task_priority>" + "<p>";
-    kanban_container.appendChild(item);
+    item.innerHTML = "<p><li class=task_title>" + task.title + task.priorityRating + "</li>" + "<li class=task_due>" + task.dueDate + "</li>" + "<li class=task_time>" + task.estimatedTime + "</li>" + "<li class=task_priority>" + "<p>";
+//kanban_container.appendChild(item);
 }
 function getFromLocalStorage(taskId) {
     task = JSON.parse(window.localStorage.getItem(taskId));
@@ -495,25 +482,19 @@ var kanban = new jKanban({
     dragItems: true,
     boards: [
         {
-            id: 'toDo',
-            title: "To Do",
-            item: [],
-            color: "#178bff",
-            order: 1
+            "id": "toDo",
+            "title": "Not Started",
+            "item": []
         },
         {
-            id: 'inProgress',
-            title: "In Progress",
-            item: [],
-            color: "#3dd66b",
-            order: 2
+            "id": "progress",
+            "title": "In Progress",
+            "item": []
         },
         {
-            id: 'done',
-            title: "Done",
-            item: [],
-            color: "#3dd66b",
-            order: 3
+            "id": "done",
+            "title": "Done",
+            "item": []
         }
     ],
     dragBoards: false,
@@ -549,7 +530,7 @@ var kanban = new jKanban({
     propagationHandlers: []
 });
 
-},{"../public/libraries/jkanban.min.js":"9f6WW"}],"9f6WW":[function(require,module,exports) {
+},{"../public/jkanban/jkanban.min.js":"hVoPL"}],"hVoPL":[function(require,module,exports) {
 var global = arguments[3];
 (function() {
     return function e(t, n, o) {
@@ -624,18 +605,19 @@ var global = arguments[3];
                         context: function(e2, t2) {
                         },
                         buttonClick: function(e2, t2) {
-                        }
+                        },
+                        propagationHandlers: []
                     };
                     function r(t2, n2) {
                         t2.addEventListener("click", function(t3) {
-                            t3.preventDefault(), e1.options.click(this), "function" == typeof this.clickfn && this.clickfn(this);
+                            e1.options.propagationHandlers.includes("click") || t3.preventDefault(), e1.options.click(this), "function" == typeof this.clickfn && this.clickfn(this);
                         });
                     }
                     function a(t2, n2) {
                         t2.addEventListener ? t2.addEventListener("contextmenu", function(t3) {
-                            t3.preventDefault(), e1.options.context(this, t3), "function" == typeof this.contextfn && this.contextfn(this, t3);
+                            e1.options.propagationHandlers.includes("context") || t3.preventDefault(), e1.options.context(this, t3), "function" == typeof this.contextfn && this.contextfn(this, t3);
                         }, !1) : t2.attachEvent("oncontextmenu", function() {
-                            e1.options.context(this), "function" == typeof this.contextfn && this.contextfn(this), window.event.returnValue = !1;
+                            e1.options.context(this), "function" == typeof this.contextfn && this.contextfn(this), e1.options.propagationHandlers.includes("context") || (window.event.returnValue = !1);
                         });
                     }
                     function c(t2, n2) {
@@ -655,8 +637,9 @@ var global = arguments[3];
                     function l(t2) {
                         var n2 = "title" in t2 ? t2.title : "";
                         if (e1.options.itemHandleOptions.enabled) {
-                            if ((void 0) !== (e1.options.itemHandleOptions.customHandler || void 0)) return n2 = "<div> " + e1.options.itemHandleOptions.customHandler.replace(/%([^%]+)%/g, (e2, n3)=>(void 0) !== t2[n3] ? t2[n3] : ""
-                            ) + " </div>";
+                            if ((void 0) !== (e1.options.itemHandleOptions.customHandler || void 0)) return n2 = "<div> " + e1.options.itemHandleOptions.customHandler.replace(/%([^%]+)%/g, function(e2, n3) {
+                                return (void 0) !== t2[n3] ? t2[n3] : "";
+                            }) + " </div>";
                             var o1 = e1.options.itemHandleOptions.customCssHandler, i1 = e1.options.itemHandleOptions.customCssIconHandler, r1 = e1.options.itemHandleOptions.customItemLayout;
                             (void 0) === (o1 || void 0) && (o1 = "drag_handler"), (void 0) === (i1 || void 0) && (i1 = o1 + "_icon"), (void 0) === (r1 || void 0) && (r1 = ""), n2 = "<div class='item_handle " + o1 + "'><i class='item_handle " + i1 + "'></i></div><div>" + n2 + "</div>";
                         }
@@ -677,11 +660,11 @@ var global = arguments[3];
                                 headers: {
                                     "Content-Type": "application/json"
                                 }
-                            }).then((t3)=>{
+                            }).then(function(t3) {
                                 t3.json().then(function(t4) {
                                     e1.options.boards = t4, e1.addBoards(e1.options.boards, !0);
                                 });
-                            }).catch((e2)=>{
+                            }).catch(function(e2) {
                                 console.log("Error: ", e2);
                             })) : e1.addBoards(e1.options.boards, !0);
                             e1.element.appendChild(e1.container);
@@ -731,11 +714,12 @@ var global = arguments[3];
                     }, this.enableAllBoards = function() {
                         var e2 = document.querySelectorAll(".kanban-board");
                         if (e2.length > 0 && (void 0) !== e2) for(var t2 = 0; t2 < e2.length; t2++)e2[t2].classList.remove("disabled-board");
-                    }, this.addElement = function(t2, n2) {
-                        var o2 = e1.element.querySelector('[data-id="' + t2 + '"] .kanban-drag'), i3 = document.createElement("div");
-                        return i3.classList.add("kanban-item"), (void 0) !== n2.id && "" !== n2.id && i3.setAttribute("data-eid", n2.id), n2.class && Array.isArray(n2.class) && n2.class.forEach(function(e2) {
-                            i3.classList.add(e2);
-                        }), i3.innerHTML = l(n2), i3.clickfn = n2.click, i3.contextfn = n2.context, i3.dragfn = n2.drag, i3.dragendfn = n2.dragend, i3.dropfn = n2.drop, s(i3, n2), r(i3), a(i3), e1.options.itemHandleOptions.enabled && (i3.style.cursor = "default"), o2.appendChild(i3), e1;
+                    }, this.addElement = function(t2, n2, o2) {
+                        (void 0) === o2 && (o2 = -1);
+                        var i3 = e1.element.querySelector('[data-id="' + t2 + '"] .kanban-drag'), c1 = i3.childNodes[o2], d1 = document.createElement("div");
+                        return d1.classList.add("kanban-item"), (void 0) !== n2.id && "" !== n2.id && d1.setAttribute("data-eid", n2.id), n2.class && Array.isArray(n2.class) && n2.class.forEach(function(e2) {
+                            d1.classList.add(e2);
+                        }), d1.innerHTML = l(n2), d1.clickfn = n2.click, d1.contextfn = n2.context, d1.dragfn = n2.drag, d1.dragendfn = n2.dragend, d1.dropfn = n2.drop, s(d1, n2), r(d1), a(d1), e1.options.itemHandleOptions.enabled && (d1.style.cursor = "default"), i3.insertBefore(d1, c1), e1;
                     }, this.addForm = function(t2, n2) {
                         var o2 = e1.element.querySelector('[data-id="' + t2 + '"] .kanban-drag'), i3 = n2.getAttribute("class");
                         return n2.setAttribute("class", i3 + " not-draggable"), o2.appendChild(n2), e1;

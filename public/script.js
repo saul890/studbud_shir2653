@@ -35,10 +35,10 @@ submitButton.addEventListener("click", function (event) {
 // Create an empty array to store our tasks
 var taskList = [];
 
-function addTask(taskDescription, dueDate, estimatedTime, priorityRating, checked) {
+function addTask(title, dueDate, estimatedTime, priorityRating, checked) {
     var task = {
         id: Date.now(),
-        taskDescription: taskDescription,
+        title: title,
         dueDate: dueDate,
         estimatedTime: estimatedTime,
         priorityRating: priorityRating,
@@ -50,7 +50,7 @@ function addTask(taskDescription, dueDate, estimatedTime, priorityRating, checke
     
 
     window.localStorage.setItem(task.id, JSON.stringify({ 
-        taskDescription: taskDescription,
+        title: title,
         dueDate: dueDate,
         estimatedTime: estimatedTime,
         priorityRating: priorityRating,
@@ -85,7 +85,7 @@ function renderTask(task) {
     let item = document.createElement("ul");
     item.classList.add("tasks");
     item.setAttribute('date-id', task.id)
-    item.innerHTML = "<p>" + "<li class=task_description>" + task.taskDescription + task.priorityRating + "</li>" + "<li class=task_due>" + task.dueDate + "</li>" + "<li class=task_time>" + task.estimatedTime + "</li>" + "<li class=task_priority>" + "<p>";
+    item.innerHTML = "<p>" + "<li class=task_title>" + task.title + task.priorityRating + "</li>" + "<li class=task_due>" + task.dueDate + "</li>" + "<li class=task_time>" + task.estimatedTime + "</li>" + "<li class=task_priority>" + "<p>";
     tasklist.appendChild(item);
 
 

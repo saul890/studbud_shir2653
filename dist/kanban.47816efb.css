@@ -106,7 +106,7 @@ input[type=checkbox] {
   position: relative;
 }
 
-.task_description {
+.task_title {
   font-weight: bold;
 }
 
