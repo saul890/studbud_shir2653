@@ -526,28 +526,23 @@ var addBoardDefault = document.getElementById('addDefault');
 addBoardDefault.addEventListener('click', function() {
     kanban.addBoards([
         {
-            'id': Date.now(),
+            'id': 'New',
             'title': 'New Title',
             'item': []
         }
     ]);
 });
-/*
-
-// Get id of the last board
-const allBoards = document.querySelector(".kanban-container");
-const lastBoard = allBoards.lastChild;
-var dataID = lastBoard.getAttribute('data-id');
-kanban.removeBoard(dataID);
-console.log(dataID);
-
-// Delete a board by Id name
-// Change to delete board by index number
-*/ var removeButton = document.getElementById('removeButton');
-//console.log(removeButton);
+// Variable for the remove button
+var removeButton = document.getElementById('removeButton');
 removeButton.addEventListener('click', function() {
-    kanban.removeBoard("_done");
-    console.log("board removed");
+    // Select the container/parent of boards
+    const allBoards = document.querySelector(".kanban-container");
+    // Select the last board/child in the container
+    const lastBoard = allBoards.lastChild;
+    // Get the ID of that last board/child
+    var dataID = lastBoard.getAttribute('data-id');
+    // Remove the last board using library function
+    kanban.removeBoard(dataID);
 });
 
 },{"../public/jkanban/jkanban.min.js":"hVoPL"}],"hVoPL":[function(require,module,exports) {
