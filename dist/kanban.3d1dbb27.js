@@ -531,6 +531,11 @@ addBoardDefault.addEventListener('click', function() {
             'item': []
         }
     ]);
+    const theTitles = document.querySelectorAll('.kanban-title-board');
+    // Change the text of multiple elements with a loop
+    theTitles.forEach((element)=>{
+        element.contentEditable = "true";
+    });
 });
 // Variable for the remove button
 var removeButton = document.getElementById('removeButton');
@@ -543,6 +548,25 @@ removeButton.addEventListener('click', function() {
     var dataID = lastBoard.getAttribute('data-id');
     // Remove the last board using library function
     kanban.removeBoard(dataID);
+});
+/*
+const headerColor = document.querySelector(".kanban-board-header");
+headerColor.addEventListener('click', function(){
+    // Change color
+})
+
+
+var headerTitle = document.querySelector(".kanban-title-board");
+headerTitle.setAttribute("contenteditable", "true");
+
+let boardHeadings = [];
+let a = document.getElementsByClassName(".kanban-title-board");
+console.log(boardHeadings.push(a));
+*/ // Get a NodeList of all .demo elements
+const theTitles = document.querySelectorAll('.kanban-title-board');
+// Change the text of multiple elements with a loop
+theTitles.forEach((element)=>{
+    element.contentEditable = "true";
 });
 
 },{"../public/jkanban/jkanban.min.js":"hVoPL"}],"hVoPL":[function(require,module,exports) {

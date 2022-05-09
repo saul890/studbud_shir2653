@@ -3,6 +3,8 @@ import '../public/jkanban/jkanban.min.js'
 // Empty array of task titles
 let titles = [];
 
+
+
 // Go through local storage and get titles
 for (var i = 0; i <= localStorage.length - 1; i++) {
     let key = localStorage.key(i);
@@ -73,6 +75,13 @@ addBoardDefault.addEventListener('click', function () {
             'item'  : []
         }]
     )
+    const theTitles = document.querySelectorAll('.kanban-title-board');
+
+// Change the text of multiple elements with a loop
+theTitles.forEach(element => {
+  element.contentEditable = "true";
+});
+
 });
 
 
@@ -90,6 +99,28 @@ removeButton.addEventListener('click',function(){
     kanban.removeBoard(dataID);
 });
 
+/*
+const headerColor = document.querySelector(".kanban-board-header");
+headerColor.addEventListener('click', function(){
+    // Change color
+})
+
+
+var headerTitle = document.querySelector(".kanban-title-board");
+headerTitle.setAttribute("contenteditable", "true");
+
+let boardHeadings = [];
+let a = document.getElementsByClassName(".kanban-title-board");
+console.log(boardHeadings.push(a));
+*/
+
+// Get a NodeList of all .demo elements
+const theTitles = document.querySelectorAll('.kanban-title-board');
+
+// Change the text of multiple elements with a loop
+theTitles.forEach(element => {
+  element.contentEditable = "true";
+});
 
 
 
