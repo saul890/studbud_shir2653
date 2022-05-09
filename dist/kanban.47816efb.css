@@ -106,6 +106,10 @@ input[type=checkbox] {
   position: relative;
 }
 
+.kanban-add-board-button {
+  float: right;
+}
+
 .task_title {
   font-weight: bold;
 }
