@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="">
   <!-- <link rel="icon" href = "img/favicon.png"> -->
-  <link rel="stylesheet" href="/index.b2a7a68e.css">
+  <link rel="stylesheet" href="/pomodoro.525bf31d.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@500;900&display=swap" rel="stylesheet">
@@ -24,7 +24,33 @@
       </div>
     </nav>
     <header class="header"></header>
-    <main class="main"></main>
+    <main class="main">
+      <h3>Pomodoro Timer</h3>
+
+      <div class="clock">
+        <div class="mins">0</div>
+        <div>:</div>
+        <div class="secs">00</div>
+        <audio src="http://soundbible.com/mp3/service-bell_daniel_simon.mp3"></audio>
+        <svg class="progress-ring" height="120" width="120">
+          <circle class="progress-ring__circle" stroke-width="8" full="transparent" r="50" cx="60" cy="60"></circle>
+        </svg>
+
+      <div class="btn-group">
+        <button class="start">Start Focuse</button>
+        <button class="reset">Reset</button>
+        <button class="pause">Pause</button>
+      </div>
+
+      <form action=".">
+        <input type="number" value="1" id="focusTime">
+        <input type="number" value="1" id="breakTime">
+      </form>
+
+      <script src="/pomodoro.cf36723d.js"></script>
+      <script src="/pomodoro.9825657b.js"></script>
+      <script src="/pomodoro.0fbb8752.js"></script>
+    </div></main>
   </div>
 </body>
-</html><script src="/pomodoro.23a0b85d.js"></script>
+</html>
