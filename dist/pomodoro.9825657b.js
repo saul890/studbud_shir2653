@@ -464,8 +464,8 @@ sessionStorage.setItem("btn", "focus");
 let initial, totalsecs, perc, paused, mins, seconds;
 startBtn.addEventListener("click", ()=>{
     let btn = sessionStorage.getItem("btn");
-    if (btn === "focus") mins = +sessionStorage.getItem("focusTime") || 1;
-    else mins = +sessionStorage.getItem("breakTime") || 1;
+    if (btn === "focus") mins = +sessionStorage.getItem("focusTime") || 25;
+    else mins = +sessionStorage.getItem("breakTime") || 5;
     seconds = mins * 60;
     totalsecs = mins * 60;
     setTimeout(decremenT(), 60);
@@ -475,13 +475,9 @@ startBtn.addEventListener("click", ()=>{
 function decremenT() {
     mindiv.textContent = Math.floor(seconds / 60);
     secdiv.textContent = seconds % 60 > 9 ? seconds % 60 : `0${seconds % 60}`;
-    // remove danger class if it already contains it at the beginning (When we restart timer)
-    if (circle.classList.contains("danger")) circle.classList.remove("danger");
     if (seconds > 0) {
         // calculating percentage of time
         perc = Math.ceil((totalsecs - seconds) / totalsecs * 100);
-        // setting progress to that percentage
-        setProgress(perc);
         seconds--;
         initial = window.setTimeout("decremenT()", 1000);
         if (seconds < 10) circle.classList.add("danger");

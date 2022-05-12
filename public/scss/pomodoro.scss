@@ -112,28 +112,32 @@ input{
 }
 
 .btn-group{
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: left;
     height: 10%;
-    margin: 35px 0;
+    margin-left: 0;
 }
 
 button{
-    margin: 5px;
-    padding: 10px;
+    margin: 20px;
+    padding: 40px;
     border: none;
     font-size: 18px;
     transition: 0.5s ease-in-out;
+    font-size: 1.5rem;
+    font-family: 'Roboto';
 }
 
 form{
-    height: 20%;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    max-width: 370px;
-    margin: 5px auto;
+  position: relative;
+  margin-left: 5%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  max-width: 370px;
+    
 }
 
 form button{
@@ -144,23 +148,24 @@ form button{
 }
 
 .start{
-    background: rgb(48, 33, 253);
-    color: white;
+    background: white;
+    color: #034EFC;
 }
 
 .break{
-    background: rgb(10, 252, 83);
-    color: white;
+    background: white;
+    color: rgb(10, 252, 83);
 }
 
 .reset{
-    background: rgb(255, 51, 51);
-    color: white;
+    background: white;
+    color: rgb(255, 51, 51);
 }
 
 .pause{
-    background: rgb(253, 143, 17);
-    color: white;
+    background: white;
+    color: rgb(253, 143, 17);
+    
 }
 
 .resume{
@@ -172,50 +177,19 @@ form button{
   padding: 3px;
   display: flex;
   position: relative;
-  justify-content: center;
-  align-items: center;
+  margin-left: 5%;
+  font-size: 100px;
+  color: #034EFC;
+  font-family: 'Roboto';
   font-weight: bold;
-  height: 30%;
-  font-size: 24px;
 }
 
-.progress-ring{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.form_button{
+  margin-top: 100px;
 }
 
-.progress-ring__circle{
-  transition: 0.5s;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-  stroke: #034EFC;
+h2{
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  margin-bottom: 0;
 }
-
-footer{
-  position: fixed;
-  bottom: 40px;
-  text-align: center;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.danger{
-  stroke: rgb(243, 17, 28);
-  animation: pulse 0.9s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: rotate(-90deg) scale(1);
-  }
-  50% {
-    transform: rotate(-90deg) scale(1.05);
-  }
-  75% {
-    transform: rotate(-90deg) scale(0.8);
-  }
-}
-

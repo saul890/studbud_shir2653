@@ -25,32 +25,34 @@
     </nav>
     <header class="header"></header>
     <main class="main">
-      <h3>Study timer</h3>
+
 
       <div class="clock">
         <div class="mins">00</div>
         <div>:</div>
         <div class="secs">00</div>
-        <audio src="https://soundbible.com/mp3/service-bell_daniel_simion.mp3"></audio>
-        <svg class="progress-ring" height="120" width="120">
-          <circle class="progress-ring__circle" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"></circle>
-        </svg>
+        <audio src="#"></audio>
+      </div>
+
+    <div class="form_button">
+      <form action=".">
+        <h2>Focus time</h2>
+        <input type="number" value="25" id="focusTime">
+        <h2>Break time</h2>
+        <input type="number" value="5" id="breakTime">
+      </form>
 
       <div class="btn-group">
-        <button class="start">Start Focuse</button>
+        <button class="start">Start Focus</button>
         <button class="reset">Reset</button>
         <button class="pause">Pause</button>
       </div>
 
-      <form action=".">
-        <input type="number" value="25" id="focusTime">
-        <input type="number" value="5" id="breakTime">
-      </form>
+    </div>
 
       <script src="/pomodoro.cf36723d.js"></script>
       <script src="/pomodoro.9825657b.js"></script>
-      <script src="/pomodoro.0fbb8752.js"></script>
-    </div></main>
+    </main>
   </div>
 </body>
 </html>
