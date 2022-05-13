@@ -458,8 +458,8 @@ function hmrAcceptRun(bundle, id) {
 const focusTimeInput = document.querySelector("#focusTime");
 const breakTimeInput = document.querySelector("#breakTime");
 const pauseBtn = document.querySelector(".pause");
-focusTimeInput.value = sessionStorage.getItem("focusTime");
-breakTimeInput.value = sessionStorage.getItem("breakTime");
+focusTimeInput.value = 25;
+breakTimeInput.value = 5;
 document.querySelector(".start").addEventListener("click", (e)=>{
     e.preventDefault();
     sessionStorage.setItem("focusTime", focusTimeInput.value);
@@ -468,8 +468,8 @@ document.querySelector(".start").addEventListener("click", (e)=>{
 document.querySelector(".reset").addEventListener("click", ()=>{
     startBtn.style.transform = "scale(1)";
     clearTimeout(initial);
-    mindiv.textContent = 0;
-    secdiv.textContent = 0;
+    mindiv.textContent = "00";
+    secdiv.textContent = "00";
 });
 pauseBtn.addEventListener("click", ()=>{
     if (paused === undefined) return;

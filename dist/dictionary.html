@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello, world!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="">
+  <!-- <link rel="icon" href = "img/favicon.png"> -->
+  <link rel="stylesheet" href="/dictionary.b2a7a68e.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="grid-container">
+    <nav class="nav">
+      <div id="navbar">
+        <a href="/index.html"><h4>Task list</h4></a>
+        <a href="/kanban.html"><h4>Kanban Board</h4></a>
+        <a href="/stopwatch.html"><h4>Stopwatch</h4></a>
+        <a href="/pomodoro.html"><h4>Pomodoro Timer</h4></a>
+        <a href="/dictionary.html"><h4 id="selected">Dictionary</h4></a>
+        <!-- <a href = "music.html"><h4>Music</h4></a> -->
+      </div>
+    </nav>
+    <header class="header"></header>
+    <main class="main">
+      <input type="search" name="searchBox" placeholder="Search for a word">
+      <input id="submitWord" type="button" name="submit" value="submit">
+
+      <div class="searchResult" id="searchResult"> 
+        <div>
+          <h2>Word</h2>
+          <p id="word"></p>
+        </div>
+        <div>
+          <h2>Definition</h2>
+          <p id="definition"></p>
+        </div>
+        <div>
+          <h2>Synonyms</h2>
+          <p id="synonyms"></p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="/dictionary.a903ddef.js"></script>
+</body>
+</html>

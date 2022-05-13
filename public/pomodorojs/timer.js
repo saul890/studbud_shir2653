@@ -9,8 +9,6 @@ sessionStorage.setItem("btn", "focus");
 
 let initial, totalsecs, perc, paused, mins, seconds;
 
-
-
 startBtn.addEventListener("click", () => {
     let btn = sessionStorage.getItem("btn");
 
@@ -30,18 +28,13 @@ startBtn.addEventListener("click", () => {
 function decremenT() {
     mindiv.textContent = Math.floor(seconds / 60);
     secdiv.textContent = seconds % 60 > 9 ? seconds % 60 : `0${seconds % 60}`;
-    
-
-
 
     if (seconds > 0) {
         // calculating percentage of time
         perc = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
         seconds--;
         initial = window.setTimeout("decremenT()", 1000);
-        if (seconds < 10){
-            circle.classList.add("danger");
-        }
+    
     } else {
         mins = 00;
         seconds = 00;

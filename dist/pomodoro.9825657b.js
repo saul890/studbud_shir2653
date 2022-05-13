@@ -480,7 +480,6 @@ function decremenT() {
         perc = Math.ceil((totalsecs - seconds) / totalsecs * 100);
         seconds--;
         initial = window.setTimeout("decremenT()", 1000);
-        if (seconds < 10) circle.classList.add("danger");
     } else {
         mins = 0;
         seconds = 0;
