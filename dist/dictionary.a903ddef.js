@@ -455,14 +455,6 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}]},["gNFkh"], null, "parcelRequire48b2")
-/*const wordInput = document.querySelector("#submitWord");
-
-var request = new XMLHttpRequest();
-
-let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput}`;
-
-console.log(JSON.parse(request.open('GET', url)));*/ // Add event listener to submit button
-// Call functions when submit it pressed
 // Store html content areas as variables
 const word = document.querySelector("#word");
 const wordDefinition = document.querySelector("#definition");
@@ -482,7 +474,7 @@ request.onload = function() {
         data.forEach(function(define) {
             renderDefine(define);
         });
-    // Call function to display data
+    // Call function to display data as an object {Word, Definition, Synonyms}
     } else // If unsuccessful, inform user
     console.log("API ERROR");
 };
@@ -496,7 +488,7 @@ function renderDefine(define) {
     //The first definition
     console.log(define.meanings[0].definitions[0].definition);
     //The first synonym
-    console.log(define.meanings[0].synonyms[0]);
+    for(i = 0; i < define.meanings[0].synonyms.length; i++)console.log(define.meanings[0].synonyms[i]);
 }
 
 //# sourceMappingURL=dictionary.a903ddef.js.map
